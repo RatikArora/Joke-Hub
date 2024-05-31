@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Joke Hub</title>
+    <style>
+        /* Google Fonts */
+        @import url(https://fonts.googleapis.com/css?family=Anonymous+Pro);
+
+        /* Global */
+        html {
+            min-height: 100%;
+            overflow: hidden;
+        }
+
+        body {
+            height: calc(100vh - 8em);
+            padding: 4em;
+            color: rgba(255, 255, 255, .75);
+            font-family: 'Anonymous Pro', monospace;
+            background-color: rgb(25, 25, 25);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            max-width: 100%;
+            overflow: hidden;
+        }
+
+        .line {
+            width: 200%;
+            /* font-size: 15px; */
+            border-right: 5px solid rgba(255, 255, 255, .75);
+            font-size: 90%;
+            white-space: nowrap;
+            overflow: hidden;
+            animation: typewriter 4s steps(44) 1s 1 normal both, blinkTextCursor 500ms steps(44) infinite normal;
+        }
+
+        /* Animation */
+        @keyframes typewriter {
+            from {
+                width: 0;
+            }
+
+            to {
+                width: 100%;
+            }
+        }
+
+        @keyframes blinkTextCursor {
+            from {
+                border-right-color: rgba(255, 255, 255, .75);
+            }
+
+            to {
+                border-right-color: transparent;
+            }
+        }
+
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <p class="line">{{random_joke}}</p>
+</div>
+<!-- <audio controls autoplay>
+    <source src="{{ url_for('serve_audio', audio_filename=audio_filename) }}" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio> -->
+<audio class="hidden" autoplay controls>
+    <source src="{{ url_for('serve_audio', audio_filename=audio_filename) }}" type="audio/mpeg">
+    <source src="{{ url_for('serve_audio', audio_filename=audio_filename) }}" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
+</body>
+</html>
